@@ -10,7 +10,7 @@ def deploy():
     with cd('/home/ovz/site/ovz'):
         with prefix:
             run('hg pull -u -b default')
-            run('pip install -r deps.pip')
+            run('pip install -r requirements.txt')
             run('python ./manage.py syncdb')
             run('python ./manage.py migrate')
             run('python ./manage.py collectstatic --noinput')
