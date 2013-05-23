@@ -1,0 +1,7 @@
+{% extends 'play_and_learn/base.html' %}
+
+{% block content %}
+    {% for letter in letters %}
+        <a href="{{ letter.get_profession_list_url }}">{{ letter }}</a>
+    {% endfor %}
+{% endblock %}

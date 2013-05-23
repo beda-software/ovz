@@ -1,0 +1,9 @@
+{% extends 'play_and_learn/base.html' %}
+
+{% block content %}
+    <ul>
+        {% for profession in letter.professionsabc_set.all %}
+            <li>{{ profession.name }} - {{ profession.description }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
