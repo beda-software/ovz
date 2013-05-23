@@ -94,7 +94,8 @@ INSTALLED_APPS = (
 
 LOCAL_APPS = (
     'main',
-    )
+    'play_and_learn',
+)
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -126,8 +127,8 @@ LOGGING = {
 }
 
 for item in LOCAL_APPS:
-    INSTALLED_APPS+=(item,)
-    TEMPLATE_DIRS+=(join(PROJECT_PATH, item,'templates'),)
-    STATICFILES_DIRS+=((item,join(PROJECT_PATH, item,'static')),)
+    INSTALLED_APPS += (item,)
+    TEMPLATE_DIRS += (join(PROJECT_PATH, item, 'templates'),)
+    STATICFILES_DIRS += ((item, join(PROJECT_PATH, item, 'static')),)
 
 from local import *

@@ -7,7 +7,9 @@ from django.contrib import admin
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
+    url(r'^play_and_learn/', include('play_and_learn.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('main.urls')),
 )
