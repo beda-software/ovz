@@ -8,6 +8,9 @@ MAIN_APPS_NAME = basename(MAIN_APPS_PATH)
 PROJECT_PATH = split(MAIN_APPS_PATH)[0]
 PROJECT_NAME = basename(PROJECT_PATH)
 
+BREADCRUMBS_AUTO_HOME = True
+BREADCRUMBS_HOME_TITLE = u'Главная'
+
 FILE_UPLOAD_PERMISSIONS = 0644
 
 DEBUG = True
@@ -60,6 +63,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'breadcrumbs.middleware.BreadcrumbsMiddleware'
 )
 
 ANONYMOUS_USER_ID = -1
@@ -88,6 +92,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'breadcrumbs',
 
     'south',
 )

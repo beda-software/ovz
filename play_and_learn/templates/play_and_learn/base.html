@@ -1,1 +1,20 @@
 {% extends 'base.html' %}
+
+{% block nav-play-and-learn %}
+    <a style="text-decoration: none" href="{% url 'play_and_learn' %}">Играем и учимся</a>
+{% endblock %}
+
+{% block page %}
+    <h2>Секции</h2>
+    <nav>
+        {% block nav-play-and-learn-section-profession %}
+            <a href="{% url 'play_and_learn.letter_list' %}">Азбука профессий</a>
+        {% endblock %}
+        {% block nav-play-and-learn-section-game %}
+            <a href="">Профигротека</a>
+        {% endblock %}
+    </nav>
+    <h2>Контент</h2>
+    {% block content %}
+    {% endblock %}
+{% endblock %}
