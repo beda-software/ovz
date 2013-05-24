@@ -17,6 +17,11 @@ class NavigateTemplateMixin(TemplateResponseMixin):
         return [
             {'name': 'main', 'description': u'Главная', 'url': reverse('main')},
             {'name': 'play_and_learn', 'description': u'Играем и учимся', 'url': reverse('play_and_learn')},
+            {'name': 'your_choice', 'description': u'Твой выбор', 'url': ''},
+            {'name': 'schools', 'description': u'Учебные заведения', 'url': ''},
+            {'name': 'labor_market', 'description': u'Рынок труда', 'url': ''},
+            {'name': 'methodical_bank', 'description': u'Методическая копилка', 'url': ''},
+            {'name': 'guest', 'description': u'Гостевая', 'url': ''},
         ]
 
     def get_navbar_active(self):
