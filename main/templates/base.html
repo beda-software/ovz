@@ -1,26 +1,71 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
-        <header>
-            <nav>
-                {% for item in request.navbar %}
-                    <a class="{% if item.name == request.navbar_active %}active {% endif %}" href="{{ item.url }}">{{ item.description }}</a>
-                {% endfor %}
-            </nav>
-        </header>
-        {% block breadcrumb %}
-            <h2>Хлебные крошки</h2>
-            <div class="breadcrumb">
-                {% for breadcrumb in request.breadcrumbs %}
-                    <a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a>{% if not forloop.last %} &raquo; {% endif %}
-                {% endfor %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>ПрофПортал</title>
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div id="wrapper">
+    <div id="header">
+        <div class="dark_green">
+            <div class="logo"><a href="/"></a></div>
+            <div class="header_text">
+                <h2>Добро пожаловать на сайт по профориентации для учащихся с ОВЗ, родителей и педагогов</h2>
+
+                <p>По вопросам данного портала обращаться:<span>Школа № 14 г. Красноярск, ул. Свердловская, 3 г,</span>
+                    <span>Тел.: 274-69-11,</span>
+                    <a href="#">www.shkola.ru</a></p>
             </div>
-        {% endblock %}
+        </div>
+        <nav class="menu">
+            {% for key,value in request.navbar.items %}
+                <div>
+                    <a {% if key == request.navbar_active %}class="current"{% endif %} href="{{ value.url }}">{{ value.description }}</a>
+                </div>
+            {% endfor %}
+        </nav>
+    </div>
+    {% block breadcrumb %}
+        <div class="breadcrumbs">
+            <ul>
+                {% for breadcrumb in request.breadcrumbs %}
+                    <li {% if forloop.last %}class="current"{% endif %}>
+                        <a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a>{% if not forloop.last %}<span>&raquo;
+                        </span>{% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endblock %}
+    <div id="content">
         {% block page %}
         {% endblock %}
-    </body>
+    </div>
+    <div class="spacing"></div>
+</div>
+
+<div id="footer">
+    <div class="footer_block">
+        <div class="copyright left">
+            <span>&copy 2013 ПрофПортал,</span>
+            <span>г. Красноярск</span>
+        </div>
+        <ul class="footer_menu">
+            {% for item in request.navbar %}
+                <li>
+                    <a href="{{ item.url }}">{{ item.description }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="copyright right">
+            <span>Разработка сайта:<a href="#">Allsol</a> </span>
+            <span>Дизайн сайта: Аверьянова Ольга</span>
+        </div>
+    </div>
+</div>
+
+</body>
 </html>

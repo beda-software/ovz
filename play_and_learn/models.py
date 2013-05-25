@@ -11,6 +11,9 @@ class ProfessionsLetter(models.Model):
     def get_profession_list_url(self):
         return ('play_and_learn.profession_list', (), {'slug':self.letter_slug })
 
+    def get_image_name(self):
+        return 'letter_{0}.png'.format(self.letter_slug)
+
     def __unicode__(self):
         return self.letter
 
@@ -24,7 +27,8 @@ class ProfessionsLetter(models.Model):
 class ProfessionsABC(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название')
     description = models.TextField(verbose_name=u'Описание')
-    first_letter = models.ForeignKey(ProfessionsLetter, verbose_name=u'Первый символ', blank=True, null=True)
+    first_letter = models.ForeignKey('play_and_learn.ProfessionsLetter',
+                                     verbose_name=u'Первый символ', blank=True, null=True)
 
     class Meta:
         verbose_name = u'Профессия'

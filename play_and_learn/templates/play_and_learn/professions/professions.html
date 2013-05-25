@@ -1,9 +1,24 @@
 {% extends 'play_and_learn/professions/base.html' %}
+{% load staticfiles %}
 
 {% block content %}
-    <ul>
-        {% for profession in letter.professionsabc_set.all %}
-            <li>{{ profession.name }} - {{ profession.description }}</li>
-        {% endfor %}
-    </ul>
+    <div class="current_letter left">
+        <div>
+            <img src="{% static 'main/img/' %}{{ letter.get_image_name }}">
+        </div>
+        <span class="back_to_list">
+            <a href="{% url 'play_and_learn.letter_list' %}">Вернуться к алфавит</a>
+        </span>
+    </div>
+    <div class="profession_list left">
+        <h3>Профессии на букву «{{ letter.letter.upper }}»</h3>
+        <ul>
+            {% for profession in letter.professionsabc_set.all %}
+                <li>
+                    <span class="profession">{{ profession.name }}</span>
+                    <span>{{ profession.description }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
