@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from collections import OrderedDict
 from django.core.urlresolvers import reverse
 from django.views.generic.base import TemplateResponseMixin
 
@@ -47,43 +48,46 @@ class MainNavigateMixin(NavigateTemplateMixin):
     navbar_active = 'main'
 
     def get_navbar(self):
-        return {
-            'main': {
+        return OrderedDict(((
+            'main', {
                 'description': u'Главная',
                 'url': reverse('main')
-            },
-            'play_and_learn': {
+            }),(
+            'play_and_learn', {
                 'description': u'Играем и учимся',
                 'url': reverse('play_and_learn'),
-                'sub_navbar':{
-                    'professions':{
-                        'description': u'Азбука профессий',
-                        'url': reverse('play_and_learn.letter_list')
-                    },
-                    'game':{
-                        'description': u'Профигротека',
-                        'url': '#'
-                    }
-                }
-            },
-            'your_choice': {
+                'sub_navbar': OrderedDict((
+                    (
+                        'professions', {
+                            'description': u'Азбука профессий',
+                            'url': reverse('play_and_learn.letter_list')
+                        }
+                    ),(
+                        'game', {
+                            'description': u'Профигротека',
+                            'url': '#'
+                        }
+                    )
+                ))
+            }),(
+            'your_choice', {
                 'description': u'Твой выбор',
                 'url': '#'
-            },
-            'schools': {
+            }),(
+            'schools', {
                 'description': u'Учебные заведения',
                 'url': '#'
-            },
-            'labor_market': {
+            }),(
+            'labor_market', {
                 'description': u'Рынок труда',
                 'url': '#'
-            },
-            'methodical_bank': {
+            }),(
+            'methodical_bank', {
                 'description': u'Методическая копилка',
                 'url': '#'
-            },
-            'guest': {
+            }),(
+            'guest', {
                 'description': u'Гостевая',
                 'url': '#'
-            },
-        }
+            })
+        ))
