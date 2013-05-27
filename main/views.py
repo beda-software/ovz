@@ -4,4 +4,4 @@ from main.mixins import MainNavigateMixin
 
 
 class MainView(MainNavigateMixin, TemplateView):
-    template_name = 'main.html'
+    template_name = 'main/main.html'

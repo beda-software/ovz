@@ -10,12 +10,6 @@ class LetterList(ProfessionsNavigateMixin, ListView):
     template_name = 'play_and_learn/professions/letters.html'
     context_object_name = 'letters'
 
-    def get_breadcrumb_list(self):
-        return [
-            (u'Играем и учимся', reverse('play_and_learn')),
-            (u'Азбука профессий', reverse('play_and_learn.letter_list'))
-        ]
-
 
 class ProfessionList(ProfessionsNavigateMixin, DetailView):
     model = ProfessionsLetter
@@ -24,10 +18,10 @@ class ProfessionList(ProfessionsNavigateMixin, DetailView):
     slug_field = 'letter_slug'
 
     def get_breadcrumb_list(self):
-        return [
-            (u'Играем и учимся', reverse('play_and_learn')),
-            (u'Азбука профессий', reverse('play_and_learn.letter_list')),
+        breadcrumb_list = super(ProfessionList, self).get_breadcrumb_list()
+        breadcrumb_list.append(
             (self.object.letter.upper(), reverse('play_and_learn.profession_list', None, (), {
                 'slug': self.object.letter_slug
             }))
-        ]
+        )
+        return breadcrumb_list

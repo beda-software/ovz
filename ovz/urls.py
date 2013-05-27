@@ -10,6 +10,7 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^play_and_learn/', include('play_and_learn.urls')),
+    url(r'^guest/', include('guest.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('main.urls')),
 )

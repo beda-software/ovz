@@ -88,6 +88,6 @@ class MainNavigateMixin(NavigateTemplateMixin):
             }),(
             'guest', {
                 'description': u'Гостевая',
-                'url': '#'
+                'url': reverse('guest')
             })
         ))

@@ -1,0 +1,82 @@
+{% extends 'guest/base.html' %}
+
+{% block content %}
+    <h3>Гостевая книга</h3>
+    <p>Дорогие ребята, уважаемые родители и педагоги, на этой странице вы сможете задать любой интересующий вас вопрос,
+        или оставить свое мнение, предложения, пожелания по работе сайта.
+        Наши специалисты с удовольствием ответят на все ваши обращения.</p>
+    <div class="feedback">
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                <tbody>
+                <tr>
+                    <td>
+                        {% include "guest/field.html" with field=form.name %}
+                    </td>
+                    <td rowspan="3">
+                        {% include "guest/field.html" with field=form.message %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% include "guest/field.html" with field=form.email %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="check">
+                            {{ form.notice }}
+                            <span>Уведомить об ответе на E-mail</span>
+                        </label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="form_bottom">
+                <span>* - Обязательные для заполнения поля</span>
+                <input type="submit" value="Отправить сообщение">
+            </div>
+        </form>
+    </div>
+    <div>
+        <h4>Всего сообщений в гостевой: {{ count }}</h4>
+        {% if is_paginated %}
+        <div class="listing">
+            <span>Страницы:</span>
+            <ul>
+                {% for page in paginator.page_range %}
+                <li {% if page_obj.number == page %}class="current"{% endif %}>
+                    <a href="{% url 'guest' %}?page={{ page }}">{{ page }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <div class="comments">
+            <ul>
+                {% for obj in object_list %}
+                <li>
+                    <span class="name italic">{{ obj.name }}</span>
+                    <span>{{ obj.message }}</span>
+                    <span class="date">{{ obj.create }}</span>
+                    <span class="name italic">Ответ администратора:</span>
+                    <span>{{ obj.answer }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if is_paginated %}
+        <div class="listing">
+            <span>Страницы:</span>
+            <ul>
+                {% for page in paginator.page_range %}
+                <li {% if page_obj.number == page %}class="current"{% endif %}>
+                    <a href="{% url 'guest' %}?page={{ page }}">{{ page }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

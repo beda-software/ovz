@@ -100,6 +100,7 @@ INSTALLED_APPS = (
 LOCAL_APPS = (
     'main',
     'play_and_learn',
+    'guest',
 )
 
 # A sample logging configuration. The only tangible logging
