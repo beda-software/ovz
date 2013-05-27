@@ -7,13 +7,13 @@ from play_and_learn.mixins import ProfessionsNavigateMixin
 
 class LetterList(ProfessionsNavigateMixin, ListView):
     model = ProfessionsLetter
-    template_name = 'play_and_learn/professions/letters.html'
+    template_name = 'play_and_learn/professions/list.html'
     context_object_name = 'letters'
 
 
 class ProfessionList(ProfessionsNavigateMixin, DetailView):
     model = ProfessionsLetter
-    template_name = 'play_and_learn/professions/professions.html'
+    template_name = 'play_and_learn/professions/detail.html'
     context_object_name = 'letter'
     slug_field = 'letter_slug'
 

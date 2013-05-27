@@ -121,7 +121,7 @@ h5 {
 
 .menu {
     border: 1px solid #FFC600;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 10px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
     display: table;
     height: 90px;
@@ -135,6 +135,16 @@ h5 {
     background: url("../img/border_left.png") left no-repeat, url("../img/border_right.png") right no-repeat;
     padding: 0 1px;
     display: table-cell;
+}
+
+.menu div:first-child {
+    background: url("../img/border_right.png") right no-repeat;
+    padding: 0 1px 0 0;
+}
+
+.menu div:last-child {
+    background: url("../img/border_left.png") left no-repeat;
+    padding: 0 0 0 1px;
 }
 
 .menu a.current {
@@ -163,8 +173,25 @@ h5 {
     font-size: 22px;
     font-weight: bold;
     height: 80px;
-    padding: 10px 9px 0;
     text-align: center;
+}
+
+.menu a span {
+    display: block;
+    padding: 10px 9px 0;
+    height: 80px;
+}
+
+.menu a.current span {
+    background: url("../img/shadow_left.png") left no-repeat, url("../img/shadow_right.png") right no-repeat;
+}
+
+.menu div:first-child a.current span {
+    background: url("../img/shadow_right.png") right no-repeat;
+}
+
+.menu div:last-child a.current span {
+    background: url("../img/shadow_left.png") left no-repeat;
 }
 
 .menu a:hover {
@@ -340,8 +367,12 @@ h5 {
     background: url("../img/checkbox_hover.png") left no-repeat;
 }
 
-.feedback input[type="checkbox"]:checked + .check span {
+.feedback input[type="checkbox"]:checked + span {
     background: url("../img/checkbox_checked.png") left no-repeat;
+}
+
+.feedback input[type="checkbox"]:checked + span:hover {
+    background: url("../img/checkbox_checked_hover.png") left no-repeat;
 }
 
 .form_bottom {
@@ -424,6 +455,7 @@ h5 {
     background: -ms-linear-gradient(top,  #fae51e 0%,#fb9505 50%,#fb9505 51%,#f8f223 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #fae51e 0%,#fb9505 50%,#fb9505 51%,#f8f223 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fae51e', endColorstr='#f8f223',GradientType=0 ); /* IE6-9 */
+    color: #406d3e;
 }
 
 .listing {
@@ -488,6 +520,12 @@ h5 {
 
 .comments span {
 	font-size:16px;
+    font-weight: normal;
+}
+
+.comments b {
+    font-size:16px;
+    display: block;
 }
 
 .comments .date {
@@ -617,7 +655,7 @@ h5 {
 }
 
 .exercise {
-	background:url(../img/square.png) top no-repeat;
+	background:url("../img/square.png") top no-repeat;
 	color: #064514;
     display: block;
     float: left;
@@ -625,18 +663,19 @@ h5 {
     text-decoration: underline;
     width: 230px;
 	margin-right: 5px;
+    margin-bottom: 25px;
 }
 
 .exercise:first-child {
 	margin-left: 5px;
 }
 
-.exercise:last-child {
+.exercise:nth-child(4) {
 	margin-right:0;
 }
 
 .exercise:hover {
-	background:url(../img/square_hover.png) top no-repeat;
+	background:url("../img/square_hover.png") top no-repeat;
 	color:#fa5005;
 }
 
@@ -663,4 +702,22 @@ h5 {
 .works a {
 	display: block;
     text-decoration: underline;
+}
+
+/*profession*/
+
+.description {
+}
+
+.bordering {
+    background: #fffe6d; /* Old browsers */
+    background: -moz-linear-gradient(top,  #aefc62 0%, #01611b 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aefc62), color-stop(100%,#01611b)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #aefc62 0%,#01611b 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #aefc62 0%,#01611b 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #aefc62 0%,#01611b 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #aefc62 0%,#01611b 100%); /* W3C */
+    float: left;
+    height: 242px;
+    padding: 4px;
 }

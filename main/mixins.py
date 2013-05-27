@@ -84,7 +84,7 @@ class MainNavigateMixin(NavigateTemplateMixin):
             }),(
             'methodical_bank', {
                 'description': u'Методическая копилка',
-                'url': '#'
+                'url': reverse('metodical_bank.list')
             }),(
             'guest', {
                 'description': u'Гостевая',

@@ -11,6 +11,7 @@ urlpatterns = patterns(
     '',
     url(r'^play_and_learn/', include('play_and_learn.urls')),
     url(r'^guest/', include('guest.urls')),
+    url(r'^methodical_bank/', include('methodical_bank.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('main.urls')),
 )

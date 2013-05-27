@@ -23,7 +23,9 @@
         <nav class="menu">
             {% for key,value in request.navbar.items %}
                 <div>
-                    <a {% if key == request.navbar_active %}class="current"{% endif %} href="{{ value.url }}">{{ value.description }}</a>
+                    <a {% if key == request.navbar_active %}class="current"{% endif %} href="{{ value.url }}">
+                        <span>{{ value.description }}</span>
+                    </a>
                 </div>
             {% endfor %}
         </nav>

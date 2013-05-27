@@ -14,7 +14,7 @@ class GuestView(GuestNavigateMixin, FormMixin,  ListView):
     form_class = GuestForm
     model = Guest
     paginate_by = 5
-    template_name = 'guest/guest.html'
+    template_name = 'guest/list.html'
 
     def get_success_url(self):
         return reverse('guest')

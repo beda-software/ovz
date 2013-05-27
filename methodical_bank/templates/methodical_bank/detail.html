@@ -1,0 +1,9 @@
+{% extends 'methodical_bank/base.html' %}
+
+{% block content %}
+    <h3>{{ metodic.name }}</h3>
+    {% autoescape off %}
+        {{ metodic.description }}
+    {% endautoescape %}
+    <a class="button left" download="{{ metodic.filename }}" href="{{ metodic.attached.url }}">Скачать материалы</a>
+{% endblock %}
