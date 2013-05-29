@@ -336,6 +336,11 @@ h5 {
     width: 30px;
 }
 
+.feedback h3 {
+    padding: 100px 0;
+    text-align: center;
+}
+
 .error {
 	color: red;
     display: block;
@@ -586,6 +591,7 @@ h5 {
 
 .letters {
     margin-right: -20px;
+    margin-top: -5px;
 }
 
 .letters div {
@@ -720,4 +726,79 @@ h5 {
     float: left;
     height: 242px;
     padding: 4px;
+    margin-top: 10px;
+    margin-right: 25px;
+}
+
+.description ul {
+    list-style: inherit;
+}
+
+.description ul li {
+}
+
+.all_professions {
+}
+
+.all_professions ul {
+    padding: 0;
+    margin: 0;
+}
+
+.all_professions ul li {
+    float: left;
+    margin-right: 15px;
+}
+
+.all_professions .profession {
+    color: #000;
+}
+
+.college {
+    border-radius: 10px;
+    padding: 4px;
+    width: 452px;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    float: left;
+}
+
+.college:hover {
+    background: #fffe6d; /* Old browsers */
+    background: -moz-linear-gradient(top,  #aefc62 0%, #01611b 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#aefc62), color-stop(100%,#01611b)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #aefc62 0%,#01611b 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #aefc62 0%,#01611b 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #aefc62 0%,#01611b 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #aefc62 0%,#01611b 100%); /* W3C */
+    text-decoration: none;
+    color: #000;
+}
+
+.college .inner_block {
+    border-radius: 10px;
+    padding: 10px 15px 0;
+}
+
+.college .inner_block:hover {
+    background: #fcf824; /* Old browsers */
+    background: -moz-linear-gradient(top,  #fcf824 0%, #ff8a01 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fcf824), color-stop(100%,#ff8a01)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fcf824 0%,#ff8a01 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fcf824 0%,#ff8a01 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #fcf824 0%,#ff8a01 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #fcf824 0%,#ff8a01 100%); /* W3C */
+}
+
+.inner_block ul {
+    list-style: inherit;
+    margin-top: 0;
+}
+
+.inner_block ul li {
+}
+
+.inner_block span {
+    display: block;
 }

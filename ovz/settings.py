@@ -102,6 +102,7 @@ LOCAL_APPS = (
     'play_and_learn',
     'guest',
     'methodical_bank',
+    'your_choice',
 )
 
 # A sample logging configuration. The only tangible logging

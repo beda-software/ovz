@@ -17,7 +17,7 @@ class GuestView(GuestNavigateMixin, FormMixin,  ListView):
     template_name = 'guest/list.html'
 
     def get_success_url(self):
-        return reverse('guest')
+        return reverse('guest.success')
 
     def get_queryset(self):
         return self.model.objects.exclude(answer__isnull=True).exclude(answer__exact='')
@@ -56,3 +56,17 @@ class GuestView(GuestNavigateMixin, FormMixin,  ListView):
         return self.render_to_response(
             self.get_context_data(object_list=self.object_list, form=self.form)
         )
+
+
+class GuestSuccessView(GuestNavigateMixin, ListView):
+    model = Guest
+    paginate_by = 5
+    template_name = 'guest/success.html'
+
+    def get_queryset(self):
+        return self.model.objects.exclude(answer__isnull=True).exclude(answer__exact='')
+
+    def get_context_data(self, **kwargs):
+        context = super(GuestSuccessView, self).get_context_data(**kwargs)
+        context['count'] = len(self.get_queryset())
+        return context

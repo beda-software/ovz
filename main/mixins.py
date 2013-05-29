@@ -72,7 +72,7 @@ class MainNavigateMixin(NavigateTemplateMixin):
             }),(
             'your_choice', {
                 'description': u'Твой выбор',
-                'url': '#'
+                'url': reverse('your_choice.list')
             }),(
             'schools', {
                 'description': u'Учебные заведения',

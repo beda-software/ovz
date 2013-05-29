@@ -1,0 +1,69 @@
+{% extends 'methodical_bank/base.html' %}
+
+{% block content %}
+    <div class="description">
+
+        <div class="bordering">
+            <img src="{{ profession.image.url }}">
+        </div>
+        <h3>{{ profession.name }}</h3>
+
+        <p><span class="profession">Общая характеристика професии:</span>{{ profession.characteristic }}</p>
+
+        <p><span class="profession">Содержание труда:</span> {{ profession.content }}</p>
+
+        {% if profession.ability %}
+        <p><span class="profession">Требования к индивидуальным способностям специалиста:</span></p>
+        <ul>
+            {% for ability in profession.ability.all %}
+            <li>
+                <span>{{ ability }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if profession.contraindications %}
+        <p><span class="profession">Медицинские противопоказания:</span></p>
+        <ul>
+            {% for contraindication in profession.contraindications.all  %}
+            <li>
+                <span>{{ contraindication }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <p>
+            <span class="profession">Пути получения профессии:</span>
+            профессии каменщика обучают в учреждениях начального профессионального образования.<br>
+            В Красноярске:
+            <a href="#">Професииональный колледж № 7</a>,
+            <a href="#">Строительный техникум № 14</a>
+        </p>
+    </div>
+    <div class=" all_professions">
+        <p><span class="profession">Остальные профессии:</span></p>
+        <ul>
+            <li>
+                <a href="#">Слесарь</a>
+            </li>
+            <li>
+                <a href="#">Закройщик</a>
+            </li>
+            <li>
+                <a href="#">Швея</a>
+            </li>
+            <li>
+                <a href="#">Строитель-отделочник</a>
+            </li>
+            <li>
+                <a href="#">Повар</a>
+            </li>
+            <li>
+                <a href="#">Садовник</a>
+            </li>
+            <li>
+                <a href="#">Сварщик</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
