@@ -49,45 +49,50 @@ class MainNavigateMixin(NavigateTemplateMixin):
     navbar_active = 'main'
 
     def get_navbar(self):
-        return OrderedDict(((
-            'main', {
+        return OrderedDict((
+            ('main', {
                 'description': u'Главная',
                 'url': reverse('main')
-            }),(
-            'play_and_learn', {
+            }),
+            ('play_and_learn', {
                 'description': u'Играем и учимся',
                 'url': reverse('play_and_learn'),
                 'sub_navbar': OrderedDict((
-                    (
-                        'professions', {
-                            'description': u'Азбука профессий',
-                            'url': reverse('play_and_learn.letter_list')
-                        }
-                    ),(
-                        'game', {
-                            'description': u'Профигротека',
-                            'url': '#'
-                        }
-                    )
-                ))
-            }),(
-            'your_choice', {
+                    ('professions', {
+                        'description': u'Азбука профессий',
+                        'url': reverse('play_and_learn.letter_list')
+                    }),
+                    ('game', {
+                        'description': u'Профигротека',
+                        'url': '#'
+                    })
+                ))}),
+            ('your_choice', {
                 'description': u'Твой выбор',
                 'url': reverse('your_choice.list')
-            }),(
-            'schools', {
+            }),
+            ('schools', {
                 'description': u'Учебные заведения',
                 'url': reverse('schools.list')
-            }),(
-            'labor_market', {
+            }),
+            ('labor_market', {
                 'description': u'Рынок труда',
-                'url': '#'
-            }),(
-            'methodical_bank', {
+                'url': reverse('labor_market'),
+                'sub_navbar': OrderedDict((
+                    ('total_info', {
+                        'description': u'Общая информация',
+                        'url': reverse('labor_market.total_info')
+                    }),
+                    ('job', {
+                        'description': u'Вакансии',
+                        'url': reverse('labor_market.job')
+                    })
+            ))}),
+            ('methodical_bank', {
                 'description': u'Методическая копилка',
                 'url': reverse('metodical_bank.list')
-            }),(
-            'guest', {
+            }),
+            ('guest', {
                 'description': u'Гостевая',
                 'url': reverse('guest')
             })

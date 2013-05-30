@@ -9,6 +9,7 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
+    url(r'^labor_market/', include('labor_market.urls')),
     url(r'^play_and_learn/', include('play_and_learn.urls')),
     url(r'^guest/', include('guest.urls')),
     url(r'^methodical_bank/', include('methodical_bank.urls')),
@@ -16,6 +17,7 @@ urlpatterns = patterns(
     url(r'^schools/', include('schools.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
+
     url(r'^', include('main.urls')),
 )
 

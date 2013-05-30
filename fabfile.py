@@ -6,6 +6,7 @@ from ovz.settings import LOCAL_APPS
 env.hosts = ['ovz@ovz.ru:22']
 prefix = prefix('source /home/ovz/bin/activate')
 
+
 def deploy():
     with cd('/home/ovz/site/ovz'):
         with prefix:
@@ -16,10 +17,12 @@ def deploy():
             run('python ./manage.py collectstatic --noinput')
             run('touch ovz/wsgi.py')
 
+
 def manage(command='help'):
     with cd('/home/ovz/site/ovz'):
         with prefix:
             run('python ./manage.py %s' % command)
+
 
 def migrate():
     for app in LOCAL_APPS:
@@ -28,6 +31,7 @@ def migrate():
         except :
             pass
     local('python manage.py migrate', capture=False)
+
 
 def syncdb():
     local('python manage.py syncdb --noinput --migrate')

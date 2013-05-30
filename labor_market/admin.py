@@ -1,10 +1,16 @@
 __author__ = 'jackdevil'
 from django.contrib import admin
-from models import ProfessionsABC
+from models import Job
 
 
-class ProfessionsABCAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'first_letter')
-    exclude = ('first_letter',)
+class JobAdmin(admin.ModelAdmin):
+    list_display = ('title', 'short_description', 'contacts', 'create', 'edit')
+    truncate_char = 30
 
-admin.site.register(ProfessionsABC, ProfessionsABCAdmin)
+    def short_description(self, obj):
+        if len(obj.description) > self.truncate_char:
+            return u'{0}...'.format(obj.description[0:self.truncate_char-3])
+        else:
+            return obj.description
+
+admin.site.register(Job, JobAdmin)

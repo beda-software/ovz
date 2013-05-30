@@ -1,0 +1,51 @@
+{% extends 'labor_market/job/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <h5>Вакансии отобраны и взяты с сайта центра занятости населения красноярского края, на котором вы также найдете
+        много полезной
+        информации - <a href="#"> www.rabota-enisey.ru</a></h5>
+
+    {% if is_paginated %}
+        <div class="listing">
+            <span>Страницы:</span>
+            <ul>
+                {% for page in paginator.page_range %}
+                    <li {% if page_obj.number == page %}class="current"{% endif %}>
+                        <a href="{% url 'labor_market.job' %}?page={{ page }}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <div class="comments">
+        <ul>
+            {% for obj in object_list %}
+                <li>
+                    <span class="name italic">{{ obj.title }}</span>
+                    {{ obj.description|safe }}
+                    <span class="name italic">{{ obj.contacts }}</span>
+                </li>
+            {% empty %}
+                <li>
+                    <span>Вакансий пока нет</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% if is_paginated %}
+        <div class="listing">
+            <span>Страницы:</span>
+            <ul>
+                {% for page in paginator.page_range %}
+                    <li {% if page_obj.number == page %}class="current"{% endif %}>
+                        <a href="{% url 'labor_market.job' %}?page={{ page }}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+{% endblock %}
+

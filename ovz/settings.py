@@ -108,6 +108,7 @@ LOCAL_APPS = (
     'methodical_bank',
     'your_choice',
     'schools',
+    'labor_market',
 )
 
 CKEDITOR_CONFIGS = {
