@@ -15,6 +15,7 @@ FILE_UPLOAD_PERMISSIONS = 0644
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+THUMBNAIL_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -97,6 +98,7 @@ INSTALLED_APPS = (
 
     'south',
     'ckeditor',
+    'sorl.thumbnail',
 )
 
 LOCAL_APPS = (

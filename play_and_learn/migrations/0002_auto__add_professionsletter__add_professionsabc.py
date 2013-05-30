@@ -11,8 +11,8 @@ class Migration(SchemaMigration):
         # Adding model 'ProfessionsLetter'
         db.create_table(u'play_and_learn_professionsletter', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('letter', self.gf('django.db.models.fields.CharField')(max_length=1)),
-            ('letter_slug', self.gf('django.db.models.fields.SlugField')(max_length=50, null=True, blank=True)),
+            ('letter_slug', self.gf('django.db.models.fields.SlugField')(max_length=150, null=True, blank=True)),
+            ('letter', self.gf('django.db.models.fields.CharField')(unique=True, max_length=1)),
         ))
         db.send_create_signal(u'play_and_learn', ['ProfessionsLetter'])
 
@@ -45,8 +45,8 @@ class Migration(SchemaMigration):
         u'play_and_learn.professionsletter': {
             'Meta': {'object_name': 'ProfessionsLetter'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'letter': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
-            'letter_slug': ('django.db.models.fields.SlugField', [], {'max_length': '50', 'null': 'True', 'blank': 'True'})
+            'letter': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '1'}),
+            'letter_slug': ('django.db.models.fields.SlugField', [], {'max_length': '150', 'null': 'True', 'blank': 'True'})
         }
     }
 

@@ -1,15 +1,19 @@
 {% extends 'schools/base.html' %}
+{% load thumbnail %}
 
 {% block content %}
     <div class="description">
         <p>
 
         <div class="bordering">
-            <img src="{{ school.image.url }}">
+            {% thumbnail school.image "189x189" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+            {% endthumbnail %}
         </div>
         <h3>{{ school.name }}</h3>
 
         <p><span class="profession">Контакты:</span>{{ school.contacts }}</p>
+
         <p>
             <span class="profession">Можно получить профессии: </span>
             {% for profession in school.professions.all %}

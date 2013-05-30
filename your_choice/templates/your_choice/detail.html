@@ -1,54 +1,57 @@
 {% extends 'your_choice/base.html' %}
+{% load thumbnail %}
 
 {% block content %}
     <div class="description">
 
         <div class="bordering">
-            <img src="{{ profession.image.url }}">
+            {% thumbnail profession.image "189x189" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+            {% endthumbnail %}
         </div>
         <h3>{{ profession.name }}</h3>
 
-        <p><span class="profession">Общая характеристика професии:</span>{{ profession.characteristic }}</p>
+        <p><span class="profession">Общая характеристика професии:</span>{{ profession.characteristic|safe }}</p>
 
-        <p><span class="profession">Содержание труда:</span> {{ profession.content }}</p>
+        <p><span class="profession">Содержание труда:</span> {{ profession.content|safe }}</p>
 
         {% if profession.ability %}
-        <p><span class="profession">Требования к индивидуальным способностям специалиста:</span></p>
-        <ul>
-            {% for ability in profession.ability.all %}
-            <li>
-                <span>{{ ability }}</span>
-            </li>
-            {% endfor %}
-        </ul>
+            <p><span class="profession">Требования к индивидуальным способностям специалиста:</span></p>
+            <ul>
+                {% for ability in profession.ability.all %}
+                    <li>
+                        <span>{{ ability }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
         {% endif %}
         {% if profession.contraindications %}
-        <p><span class="profession">Медицинские противопоказания:</span></p>
-        <ul>
-            {% for contraindication in profession.contraindications.all  %}
-            <li>
-                <span>{{ contraindication }}</span>
-            </li>
-            {% endfor %}
-        </ul>
+            <p><span class="profession">Медицинские противопоказания:</span></p>
+            <ul>
+                {% for contraindication in profession.contraindications.all %}
+                    <li>
+                        <span>{{ contraindication }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
         {% endif %}
         <p>
             <span class="profession">Пути получения профессии:</span><br>
             {% for school in profession.school_set.all %}
-            <a href="{{ school.get_absolute_url }}">{{ school }}</a>{% if not forloop.last %},{% endif %}
+                <a href="{{ school.get_absolute_url }}">{{ school }}</a>{% if not forloop.last %},{% endif %}
             {% endfor %}
         </p>
     </div>
     {% if rest_professions %}
-    <div class=" all_professions">
-        <p><span class="profession">Остальные профессии:</span></p>
-        <ul>
-            {% for profession in rest_professions %}
-            <li>
-                <a href="{{ profession.get_absolute_url }}">{{ profession }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+        <div class=" all_professions">
+            <p><span class="profession">Остальные профессии:</span></p>
+            <ul>
+                {% for profession in rest_professions %}
+                    <li>
+                        <a href="{{ profession.get_absolute_url }}">{{ profession }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endif %}
 {% endblock %}

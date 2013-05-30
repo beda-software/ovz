@@ -18,11 +18,11 @@ class Migration(SchemaMigration):
         # Adding model 'Profession'
         db.create_table(u'your_choice_profession', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=150, null=True, blank=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=100)),
             ('characteristic', self.gf('ckeditor.fields.RichTextField')()),
             ('content', self.gf('ckeditor.fields.RichTextField')()),
             ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
         ))
         db.send_create_signal(u'your_choice', ['Profession'])
 
@@ -76,8 +76,8 @@ class Migration(SchemaMigration):
             'contraindications': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['your_choice.ProfessionContraindications']", 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'})
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '100'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '150', 'null': 'True', 'blank': 'True'})
         },
         u'your_choice.professionability': {
             'Meta': {'object_name': 'ProfessionAbility'},

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block page %}
+    {% if request.sub_navbar %}
+        <div class="buttons">
+            {% for key,value in request.sub_navbar.items %}
+                <a class="button{% if key == request.sub_navbar_active %} active{% endif %}"
+                   href="{{ value.url }}">{{ value.description }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+{% endblock %}

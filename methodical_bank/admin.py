@@ -9,6 +9,7 @@ class MethodicalBankAdmin(admin.ModelAdmin):
     list_display = ('name', 'author', 'short_about_author',
                     'short_methodology', 'attached',)
     exclude = ('slug',)
+    truncate_char = 30
 
     def short_about_author(self, obj):
         if len(obj.about_author) > self.truncate_char:
@@ -22,7 +23,7 @@ class MethodicalBankAdmin(admin.ModelAdmin):
         else:
             return obj.methodology
 
-    short_about_author.short_description = u'О авторе'
+    short_about_author.short_description = u'Об авторе'
     short_methodology.short_description = u'О методике'
 
 admin.site.register(MethodicalBank, MethodicalBankAdmin)

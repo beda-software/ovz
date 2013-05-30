@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*
 from ckeditor.fields import RichTextField
 from django.db import models
-from pytils.translit import slugify
+from main.mixins import SlugTraits
 
 
-class ProfessionsLetter(models.Model):
-    letter = models.CharField(max_length=1, verbose_name=u'Символ')
-    letter_slug = models.SlugField(verbose_name=u'Слуг символа', blank=True, null=True)
+class ProfessionsLetter(SlugTraits('letter', 'letter_slug'), models.Model):
+    letter = models.CharField(max_length=1, verbose_name=u'Символ', unique=True)
 
     @models.permalink
     def get_absolute_url(self):
@@ -17,12 +16,6 @@ class ProfessionsLetter(models.Model):
 
     def __unicode__(self):
         return self.letter
-
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        self.letter_slug = slugify(self.letter)
-        super(ProfessionsLetter, self).save(force_insert=force_insert, force_update=force_update,
-                                            using=using, update_fields=update_fields)
 
 
 class ProfessionsABC(models.Model):

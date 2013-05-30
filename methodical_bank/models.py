@@ -1,26 +1,17 @@
 # -*- coding: utf-8 -*-
 from ckeditor.fields import RichTextField
 from django.db import models
-
-# Create your models here.
-from pytils.translit import slugify
+from main.mixins import SlugTraits
 
 
-class MethodicalBank(models.Model):
-    name = models.CharField(max_length=200, verbose_name=u'Название')
+class MethodicalBank(SlugTraits(), models.Model):
+    name = models.CharField(max_length=200, verbose_name=u'Название', unique=True)
     author = models.CharField(max_length=100, verbose_name=u'Автор')
-    about_author = RichTextField(verbose_name=u'О авторе')
+    about_author = RichTextField(verbose_name=u'Об авторе')
     methodology = RichTextField(verbose_name=u'О методике')
     attached = models.FileField(upload_to='metodical_bank/', verbose_name=u'Файл')
     create = models.DateTimeField(auto_now_add=True, verbose_name=u'Создано')
     edit = models.DateTimeField(auto_now=True, verbose_name=u'Изменено')
-    slug = models.SlugField(verbose_name=u'Slug')
-
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        self.slug = slugify(self.name)
-        super(MethodicalBank, self).save(force_insert=force_insert, force_update=force_update,
-                                         using=using, update_fields=update_fields)
 
     @models.permalink
     def get_absolute_url(self):

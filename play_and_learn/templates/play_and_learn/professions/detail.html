@@ -16,7 +16,7 @@
             {% for profession in letter.professionsabc_set.all %}
                 <li>
                     <span class="profession">{{ profession.name }}</span>
-                    <span>{{ profession.description }}</span>
+                    <span>{{ profession.description|safe }}</span>
                 </li>
             {% endfor %}
         </ul>

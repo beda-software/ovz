@@ -17,7 +17,7 @@
 
                 <p>По вопросам данного портала обращаться:<span>Школа № 14 г. Красноярск, ул. Свердловская, 3 г,</span>
                     <span>Тел.: 274-69-11,</span>
-                    <a href="#">www.shkola.ru</a></p>
+                    <a href="/">www.shkola.ru</a></p>
             </div>
         </div>
         <nav class="menu">
@@ -56,14 +56,14 @@
             <span>г. Красноярск</span>
         </div>
         <ul class="footer_menu">
-            {% for item in request.navbar %}
+            {% for key,value in request.navbar.items %}
                 <li>
-                    <a href="{{ item.url }}">{{ item.description }}</a>
+                    <a href="{{ value.url }}">{{ value.description }}</a>
                 </li>
             {% endfor %}
         </ul>
         <div class="copyright right">
-            <span>Разработка сайта:<a href="#">Allsol</a> </span>
+            <span>Разработка сайта:<a href="http://allsol.ru/">Allsol</a> </span>
             <span>Дизайн сайта: Аверьянова Ольга</span>
         </div>
     </div>

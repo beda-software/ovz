@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from pytils.translit import slugify
 from ckeditor.fields import RichTextField
+from main.mixins import SlugTraits
 
 
 class ProfessionAbility(models.Model):
@@ -26,8 +26,8 @@ class ProfessionContraindications(models.Model):
         verbose_name_plural = u'Противопоказания'
 
 
-class Profession(models.Model):
-    name = models.CharField(max_length=100, verbose_name=u"Название")
+class Profession(SlugTraits(), models.Model):
+    name = models.CharField(max_length=100, verbose_name=u"Название", unique=True)
     characteristic = RichTextField(verbose_name=u"Общая характеристика")
     content = RichTextField(verbose_name=u"Содержание труда")
     ability = models.ManyToManyField('ProfessionAbility',
@@ -35,17 +35,10 @@ class Profession(models.Model):
     contraindications = models.ManyToManyField('ProfessionContraindications',
                                                verbose_name=u"Противопоказания", blank=True, null=True)
     image = models.ImageField(upload_to='profession_image/')
-    slug = models.SlugField(verbose_name=u'Slug')
 
     @models.permalink
     def get_absolute_url(self):
-        return ('your_choice.detail', (), {'slug':self.slug })
-
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        self.slug = slugify(self.name)
-        super(Profession, self).save(force_insert=force_insert, force_update=force_update,
-                                     using=using, update_fields=update_fields)
+        return ('your_choice.detail', (), {'slug': self.slug})
 
     def __unicode__(self):
         return self.name

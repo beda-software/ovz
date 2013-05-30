@@ -11,14 +11,14 @@ class Migration(SchemaMigration):
         # Adding model 'MethodicalBank'
         db.create_table(u'methodical_bank_methodicalbank', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
+            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=150, null=True, blank=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=200)),
             ('author', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('about_author', self.gf('ckeditor.fields.RichTextField')()),
             ('methodology', self.gf('ckeditor.fields.RichTextField')()),
             ('attached', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
             ('create', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('edit', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
-            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
         ))
         db.send_create_signal(u'methodical_bank', ['MethodicalBank'])
 
@@ -38,8 +38,8 @@ class Migration(SchemaMigration):
             'edit': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'methodology': ('ckeditor.fields.RichTextField', [], {}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
-            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'})
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '200'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '150', 'null': 'True', 'blank': 'True'})
         }
     }
 

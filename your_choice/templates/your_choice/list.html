@@ -1,4 +1,5 @@
 {% extends 'your_choice/base.html' %}
+{% load thumbnail %}
 
 {% block content %}
     <p>В условиях современного общества острое социально-экономическое значение имеет проблема трудоустройства лиц с
@@ -14,14 +15,16 @@
         список
         учебныч заведений, обучающих этим профессиям.</p>
     {% if professions %}
-    <h3>Список профессий:</h3>
-    <div class="exercises">
-        {% for profession in professions %}
-        <a class="exercise" href="{{ profession.get_absolute_url }}">
-            <img src="{{ profession.image.url }}">{{ profession.name }}
-        </a>
-        {% endfor %}
-    </div>
+        <h3>Список профессий:</h3>
+        <div class="exercises">
+            {% for profession in professions %}
+                <a class="exercise" href="{{ profession.get_absolute_url }}">
+                    {% thumbnail profession.image "189x189" crop="center" as im %}
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">{{ profession.name }}
+                    {% endthumbnail %}
+                </a>
+            {% endfor %}
+        </div>
     {% else %}
         <h3>Не добавлено ни одной профессии</h3>
     {% endif %}

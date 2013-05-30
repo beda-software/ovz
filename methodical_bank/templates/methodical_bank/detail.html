@@ -2,8 +2,7 @@
 
 {% block content %}
     <h3>{{ metodic.name }}</h3>
-    {% autoescape off %}
-        {{ metodic.description }}
-    {% endautoescape %}
+    <p><span class="profession">Об авторе:</span> {{ metodic.about_author|safe }}</p>
+    <p><span class="profession">О методике:</span> {{ metodic.methodology|safe }}</p>
     <a class="button left" download="{{ metodic.filename }}" href="{{ metodic.attached.url }}">Скачать материалы</a>
 {% endblock %}
