@@ -8,7 +8,7 @@
     <div class="letters">
         {% for letter in letters %}
             <div>
-                <a href="{{ letter.get_profession_list_url }}">
+                <a href="{{ letter.get_absolute_url }}">
                     <img alt="{{ letter }}" src="{% static 'main/img/' %}{{ letter.get_image_name }}">
                 </a>
             </div>

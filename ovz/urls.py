@@ -13,6 +13,8 @@ urlpatterns = patterns(
     url(r'^guest/', include('guest.urls')),
     url(r'^methodical_bank/', include('methodical_bank.urls')),
     url(r'^your_choice/', include('your_choice.urls')),
+    url(r'^schools/', include('schools.urls')),
+    url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('main.urls')),
 )

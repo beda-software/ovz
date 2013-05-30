@@ -12,8 +12,9 @@ class Migration(SchemaMigration):
         db.create_table(u'methodical_bank_methodicalbank', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('description', self.gf('django.db.models.fields.TextField')()),
             ('author', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('about_author', self.gf('ckeditor.fields.RichTextField')()),
+            ('methodology', self.gf('ckeditor.fields.RichTextField')()),
             ('attached', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
             ('create', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('edit', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
@@ -30,12 +31,13 @@ class Migration(SchemaMigration):
     models = {
         u'methodical_bank.methodicalbank': {
             'Meta': {'object_name': 'MethodicalBank'},
+            'about_author': ('ckeditor.fields.RichTextField', [], {}),
             'attached': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             'author': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'create': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
-            'description': ('django.db.models.fields.TextField', [], {}),
             'edit': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'methodology': ('ckeditor.fields.RichTextField', [], {}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'})
         }

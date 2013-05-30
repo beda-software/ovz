@@ -20,7 +20,7 @@ class Migration(SchemaMigration):
         db.create_table(u'play_and_learn_professionsabc', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('description', self.gf('django.db.models.fields.TextField')()),
+            ('description', self.gf('ckeditor.fields.RichTextField')()),
             ('first_letter', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['play_and_learn.ProfessionsLetter'], null=True, blank=True)),
         ))
         db.send_create_signal(u'play_and_learn', ['ProfessionsABC'])
@@ -37,7 +37,7 @@ class Migration(SchemaMigration):
     models = {
         u'play_and_learn.professionsabc': {
             'Meta': {'object_name': 'ProfessionsABC'},
-            'description': ('django.db.models.fields.TextField', [], {}),
+            'description': ('ckeditor.fields.RichTextField', [], {}),
             'first_letter': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['play_and_learn.ProfessionsLetter']", 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})

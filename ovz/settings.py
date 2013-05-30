@@ -43,6 +43,7 @@ STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = STATIC_URL
 MEDIA_ROOT = join(PROJECT_PATH, 'media')
 MEDIA_URL = '/media/'
+CKEDITOR_UPLOAD_PATH = join(MEDIA_ROOT, 'ckupload')
 STATICFILES_DIRS = ()
 TEMPLATE_DIRS = ()
 
@@ -95,6 +96,7 @@ INSTALLED_APPS = (
     'breadcrumbs',
 
     'south',
+    'ckeditor',
 )
 
 LOCAL_APPS = (
@@ -103,7 +105,24 @@ LOCAL_APPS = (
     'guest',
     'methodical_bank',
     'your_choice',
+    'schools',
 )
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': [
+            ['Format'], ['Undo', 'Redo'],
+            ['Bold', 'Italic', 'Underline'],
+            ['Link', 'Unlink'],
+            ['BulletedList', 'NumberedList', 'HorizontalRule'],
+            ['Cut', 'Copy', 'Paste'],
+            ['Source', 'Maximize'],
+        ],
+        'defaultLanguage': 'en',
+        'uiColor': '#FAFAFA',
+        'language': 'fr'
+    }
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

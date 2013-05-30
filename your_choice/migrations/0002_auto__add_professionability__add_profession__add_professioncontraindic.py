@@ -19,8 +19,10 @@ class Migration(SchemaMigration):
         db.create_table(u'your_choice_profession', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('characteristic', self.gf('django.db.models.fields.TextField')()),
-            ('content', self.gf('django.db.models.fields.TextField')()),
+            ('characteristic', self.gf('ckeditor.fields.RichTextField')()),
+            ('content', self.gf('ckeditor.fields.RichTextField')()),
+            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
         ))
         db.send_create_signal(u'your_choice', ['Profession'])
 
@@ -68,12 +70,14 @@ class Migration(SchemaMigration):
     models = {
         u'your_choice.profession': {
             'Meta': {'object_name': 'Profession'},
-            'ability': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['your_choice.ProfessionAbility']", 'symmetrical': 'False'}),
-            'characteristic': ('django.db.models.fields.TextField', [], {}),
-            'content': ('django.db.models.fields.TextField', [], {}),
-            'contraindications': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['your_choice.ProfessionContraindications']", 'symmetrical': 'False'}),
+            'ability': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['your_choice.ProfessionAbility']", 'null': 'True', 'blank': 'True'}),
+            'characteristic': ('ckeditor.fields.RichTextField', [], {}),
+            'content': ('ckeditor.fields.RichTextField', [], {}),
+            'contraindications': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': u"orm['your_choice.ProfessionContraindications']", 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'})
         },
         u'your_choice.professionability': {
             'Meta': {'object_name': 'ProfessionAbility'},

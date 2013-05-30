@@ -724,10 +724,13 @@ h5 {
     background: -ms-linear-gradient(top,  #aefc62 0%,#01611b 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #aefc62 0%,#01611b 100%); /* W3C */
     float: left;
-    height: 242px;
     padding: 4px;
     margin-top: 10px;
     margin-right: 25px;
+}
+
+.bordering img {
+    margin-bottom: -5px;
 }
 
 .description ul {

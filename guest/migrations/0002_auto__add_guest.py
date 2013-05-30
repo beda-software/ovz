@@ -16,6 +16,8 @@ class Migration(SchemaMigration):
             ('message', self.gf('django.db.models.fields.TextField')()),
             ('notice', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('answer', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
+            ('create', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+            ('edit', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
         ))
         db.send_create_signal(u'guest', ['Guest'])
 
@@ -29,6 +31,8 @@ class Migration(SchemaMigration):
         u'guest.guest': {
             'Meta': {'object_name': 'Guest'},
             'answer': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'create': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'edit': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'message': ('django.db.models.fields.TextField', [], {}),

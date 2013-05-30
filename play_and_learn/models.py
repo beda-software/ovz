@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*
+from ckeditor.fields import RichTextField
 from django.db import models
 from pytils.translit import slugify
 
@@ -8,7 +9,7 @@ class ProfessionsLetter(models.Model):
     letter_slug = models.SlugField(verbose_name=u'Слуг символа', blank=True, null=True)
 
     @models.permalink
-    def get_profession_list_url(self):
+    def get_absolute_url(self):
         return ('play_and_learn.profession_list', (), {'slug':self.letter_slug })
 
     def get_image_name(self):
@@ -26,7 +27,7 @@ class ProfessionsLetter(models.Model):
 
 class ProfessionsABC(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Название')
-    description = models.TextField(verbose_name=u'Описание')
+    description = RichTextField(verbose_name=u'Описание')
     first_letter = models.ForeignKey('play_and_learn.ProfessionsLetter',
                                      verbose_name=u'Первый символ', blank=True, null=True)
 
@@ -36,6 +37,10 @@ class ProfessionsABC(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('play_and_learn.profession_list', (), {'slug':self.first_letter.letter_slug })
 
     def save(self, force_insert=False, force_update=False, using=None,
              update_fields=None):

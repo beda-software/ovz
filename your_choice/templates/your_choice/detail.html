@@ -1,4 +1,4 @@
-{% extends 'methodical_bank/base.html' %}
+{% extends 'your_choice/base.html' %}
 
 {% block content %}
     <div class="description">
@@ -33,37 +33,22 @@
         </ul>
         {% endif %}
         <p>
-            <span class="profession">Пути получения профессии:</span>
-            профессии каменщика обучают в учреждениях начального профессионального образования.<br>
-            В Красноярске:
-            <a href="#">Професииональный колледж № 7</a>,
-            <a href="#">Строительный техникум № 14</a>
+            <span class="profession">Пути получения профессии:</span><br>
+            {% for school in profession.school_set.all %}
+            <a href="{{ school.get_absolute_url }}">{{ school }}</a>{% if not forloop.last %},{% endif %}
+            {% endfor %}
         </p>
     </div>
+    {% if rest_professions %}
     <div class=" all_professions">
         <p><span class="profession">Остальные профессии:</span></p>
         <ul>
+            {% for profession in rest_professions %}
             <li>
-                <a href="#">Слесарь</a>
+                <a href="{{ profession.get_absolute_url }}">{{ profession }}</a>
             </li>
-            <li>
-                <a href="#">Закройщик</a>
-            </li>
-            <li>
-                <a href="#">Швея</a>
-            </li>
-            <li>
-                <a href="#">Строитель-отделочник</a>
-            </li>
-            <li>
-                <a href="#">Повар</a>
-            </li>
-            <li>
-                <a href="#">Садовник</a>
-            </li>
-            <li>
-                <a href="#">Сварщик</a>
-            </li>
+            {% endfor %}
         </ul>
     </div>
+    {% endif %}
 {% endblock %}

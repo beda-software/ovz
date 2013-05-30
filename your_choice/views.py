@@ -16,6 +16,11 @@ class Detail(YourChoiceNavigateMixin, DetailView):
     template_name = 'your_choice/detail.html'
     context_object_name = 'profession'
 
+    def get_context_data(self, **kwargs):
+        context = super(Detail, self).get_context_data(**kwargs)
+        context['rest_professions'] = Profession.objects.exclude(pk=self.object.pk)
+        return context
+
     def get_breadcrumb_list(self):
         breadcrumb_list = super(Detail, self).get_breadcrumb_list()
         breadcrumb_list.append(

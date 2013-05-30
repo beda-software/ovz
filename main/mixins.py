@@ -76,7 +76,7 @@ class MainNavigateMixin(NavigateTemplateMixin):
             }),(
             'schools', {
                 'description': u'Учебные заведения',
-                'url': '#'
+                'url': reverse('schools.list')
             }),(
             'labor_market', {
                 'description': u'Рынок труда',

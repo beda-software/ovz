@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-
-# Create your models here.
 from pytils.translit import slugify
+from ckeditor.fields import RichTextField
 
 
 class ProfessionAbility(models.Model):
@@ -29,8 +28,8 @@ class ProfessionContraindications(models.Model):
 
 class Profession(models.Model):
     name = models.CharField(max_length=100, verbose_name=u"Название")
-    characteristic = models.TextField(verbose_name=u"Общая характеристика")
-    content = models.TextField(verbose_name=u"Содержание труда")
+    characteristic = RichTextField(verbose_name=u"Общая характеристика")
+    content = RichTextField(verbose_name=u"Содержание труда")
     ability = models.ManyToManyField('ProfessionAbility',
                                      verbose_name=u"Требования к способностям специалиста", blank=True, null=True)
     contraindications = models.ManyToManyField('ProfessionContraindications',

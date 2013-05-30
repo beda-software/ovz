@@ -1,0 +1,31 @@
+{% extends 'schools/base.html' %}
+
+{% block content %}
+    <div class="description">
+        <p>
+
+        <div class="bordering">
+            <img src="{{ school.image.url }}">
+        </div>
+        <h3>{{ school.name }}</h3>
+
+        <p><span class="profession">Контакты:</span>{{ school.contacts }}</p>
+        <p>
+            <span class="profession">Можно получить профессии: </span>
+            {% for profession in school.professions.all %}
+                <a href="{{ profession.get_absolute_url }}">{{ profession }}</a>{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        </p>
+
+        <p><span class="profession">Об учреждении:</span>{{ school.establishing|safe }}</p>
+
+        <p>
+            <span class="profession">О специальностях:</span> {{ school.specialties|safe }}
+        </p>
+
+        <p><span class="profession">Правила приема: </span>{{ school.rules|safe }}</p>
+
+        <p><span class="profession">Дополнительная информация: </span>{{ school.advanced|safe }}</p>
+        <a href="{% url 'schools.list' %}">вернуться к списку учебных заведений &raquo;</a>
+    </div>
+{% endblock %}

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from ckeditor.fields import RichTextField
 from django.db import models
 
 # Create your models here.
@@ -7,8 +8,9 @@ from pytils.translit import slugify
 
 class MethodicalBank(models.Model):
     name = models.CharField(max_length=200, verbose_name=u'Название')
-    description = models.TextField(verbose_name=u'Описание')
     author = models.CharField(max_length=100, verbose_name=u'Автор')
+    about_author = RichTextField(verbose_name=u'О авторе')
+    methodology = RichTextField(verbose_name=u'О методике')
     attached = models.FileField(upload_to='metodical_bank/', verbose_name=u'Файл')
     create = models.DateTimeField(auto_now_add=True, verbose_name=u'Создано')
     edit = models.DateTimeField(auto_now=True, verbose_name=u'Изменено')
