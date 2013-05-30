@@ -33,7 +33,7 @@ class ProfessionsABC(models.Model):
 
     class Meta:
         verbose_name = u'Профессия'
-        verbose_name_plural = u'Профессии'
+        verbose_name_plural = u'Краткое описание профессий'
 
     def __unicode__(self):
         return self.name
