@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     'south',
     'ckeditor',
     'sorl.thumbnail',
+    'flatblocks',
 )
 
 LOCAL_APPS = (
