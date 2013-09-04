@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load flatblock_tags %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +15,7 @@
         <div class="dark_green">
             <div class="logo"><a href="/"></a></div>
             <div class="header_text">
-                <h2>Добро пожаловать на сайт по профориентации для учащихся с ОВЗ, родителей и педагогов</h2>
-
-                <p>По вопросам данного портала обращаться:<span>Школа № 14 г. Красноярск, ул. Свердловская, 3 г,</span>
-                    <span>Тел.: 274-69-11,</span>
-                    <a href="/">www.shkola.ru</a></p>
+                {% flatblock "Шапка" %}
             </div>
         </div>
         <nav class="menu">

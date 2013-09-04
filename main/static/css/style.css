@@ -846,3 +846,7 @@ h5 {
     color: #fff;
     font-size: 16px;
 }
+
+.dotted ul {
+    list-style: disc;
+}

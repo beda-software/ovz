@@ -3,7 +3,9 @@
 {% load flatblock_tags %}
 
 {% block content %}
-    {% flatblock "Твой выбор" %}
+    <div class="dotted">
+        {% flatblock "Твой выбор" %}
+    </div>
     {% if professions %}
         <h3>Список профессий:</h3>
         <div class="exercises">
