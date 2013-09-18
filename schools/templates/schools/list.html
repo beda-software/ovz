@@ -1,13 +1,11 @@
-{% extends 'schools/base.html' %}
+﻿{% extends 'schools/base.html' %}
 {% load flatblock_tags %}
 
 {% block content %}
     {% flatblock "Учебные заведения" %}
     {% if schools %}
-        <h5>Мы подготовили список наиболее подходящих для ребят с ограниченными возможностями образовательных
-            учреждений,
-            предлагаем ознакомиться с ними подробнее:</h5>
-        <div>
+        <h5>
+      <div>
             {% for school in schools %}
                 <a class="college" href="{{ school.get_absolute_url }}">
                     <div class="inner_block">

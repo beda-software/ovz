@@ -1,10 +1,10 @@
-{% extends 'methodical_bank/base.html' %}
+﻿{% extends 'methodical_bank/base.html' %}
 {% load flatblock_tags %}
 
 {% block content %}
     {% flatblock "Методическая копилка" %}
     {% if object_list %}
-    <p>Ниже выложены наработки наших преподавателей и коллег.</p>
+    <p>Предлагаем вашему вниманию разработки занятий и методический материал по профориентации ваших коллег.</p>
     <ul class="works">
         {% for obj in object_list %}
             <li>
