@@ -3,19 +3,19 @@ from fabric.api import env, cd, run, prefix
 from fabric.operations import local
 from ovz.settings import LOCAL_APPS
 
-env.hosts = ['ovz@ovz.ru:22']
+env.hosts = ['ovz@allsol.ru:7626']
 prefix = prefix('source /home/ovz/bin/activate')
 
 
 def deploy():
     with cd('/home/ovz/site/ovz'):
         with prefix:
-            run('hg pull -u -b default')
+            run('git pull')
             run('pip install -r requirements.txt')
             run('python ./manage.py syncdb')
             run('python ./manage.py migrate')
             run('python ./manage.py collectstatic --noinput')
-            run('touch ovz/wsgi.py')
+    run('./restart.sh')
 
 
 def manage(command='help'):
