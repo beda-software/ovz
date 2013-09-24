@@ -135,6 +135,7 @@ h5 {
     background: url("../img/border_left.png") left no-repeat, url("../img/border_right.png") right no-repeat;
     padding: 0 1px;
     display: table-cell;
+    vertical-align: middle;
 }
 
 .menu div:first-child {
@@ -177,9 +178,10 @@ h5 {
 }
 
 .menu a span {
-    display: block;
-    padding: 10px 9px 0;
+    display: table-cell;
+    padding: 5px 9px 5px;
     height: 80px;
+    vertical-align: middle;
 }
 
 .menu a.current span {
