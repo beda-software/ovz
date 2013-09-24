@@ -646,15 +646,28 @@ h5 {
 
 .profession_list li {
     margin-bottom: 20px;
+    border-bottom: 1px #C3E3C5 solid;
+    padding-bottom: 10px;
 }
 
 .profession_list li span {
     display: block;
 }
 
+.profession_list li:last-child {
+    border-bottom: none;
+}
+
 .profession {
     font-weight: bold;
     color: #286432;
+}
+
+.profession__reverse {
+    display: block;
+    text-align: right;
+    font-style: italic;
+    padding-right: 10px;
 }
 
 /*profigrotek*/
