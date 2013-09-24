@@ -8,6 +8,7 @@ prefix = prefix('source /home/ovz/bin/activate')
 
 
 def deploy():
+    local('git push')
     with cd('/home/ovz/site/ovz'):
         with prefix:
             run('git pull')
