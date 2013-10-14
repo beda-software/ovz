@@ -204,6 +204,10 @@ h5 {
     padding: 0 10px 40px;
 }
 
+#content p {
+    text-align: justify;
+}
+
 .italic {
     font-family: 'OpenSans-BoldItalic';
 }
