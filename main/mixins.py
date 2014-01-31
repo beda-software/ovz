@@ -134,7 +134,7 @@ def create_model(name, fields=None, app_label='', module='', options=None):
 def SlugTraits(base_filed_name='name', slug_field_name='slug'):
     """
     Функция генерирующая Mixin к модели
-    Добавлющий _slug поле к указанному полю
+    Добавляющий _slug поле к указанному полю
     При сохраении в это поле записывается slug от указанного поля
     Описание класса на метаязыке
     class SlugMixin(models.Model):
