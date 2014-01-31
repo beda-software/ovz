@@ -26,7 +26,7 @@ EMAIL_HOST_USER = 'profportal24.robot@gmail.com'
 EMAIL_HOST_PASSWORD = '2ugy3bhrwnfd'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_NOTICE_GUEST = 'xifrin@gmail.com'
+EMAIL_NOTICE_GUEST = 'profportal24@gmail.com'
 
 MANAGERS = ADMINS
 
