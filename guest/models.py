@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.core.mail import send_mail
+
+from ovz.settings import EMAIL_NOTICE_GUEST, EMAIL_HOST_USER
 
 # Create your models here.
-
 
 class Guest(models.Model):
     name = models.CharField(max_length=100, verbose_name=u'Ваше имя *')
@@ -19,3 +21,13 @@ class Guest(models.Model):
     class Meta:
         verbose_name = u'Сообщение'
         verbose_name_plural = u'Гостевая книга'
+
+    def save(self, force_insert=False, force_update=False, using=None):
+        super(Guest, self).save()
+        title = u'В гостевую книгу добавлена новая запись!'
+
+        content = u'В гостевую книгу добавлена новая запись!\n\n'
+        content+= u'Отправитель: ' + self.name + '\n' + u'Сообщение: ' + self.message + '\n'
+
+        send_mail(title, content, EMAIL_HOST_USER, [EMAIL_NOTICE_GUEST])
+
